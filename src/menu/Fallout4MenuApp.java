@@ -7,6 +7,7 @@ import javafx.scene.effect.SepiaTone;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class Fallout4MenuApp extends Application {
@@ -23,7 +24,19 @@ public class Fallout4MenuApp extends Application {
 		SepiaTone tone = new SepiaTone(0.85);
 		imageView.setEffect(tone);
 		
-		root.getChildren().addAll(imageView);
+		Rectangle masker = new Rectangle(1280, 720);
+		masker.setOpacity(0);
+		masker.setMouseTransparent(true);
+		
+		MenuBox menuBox = new MenuBox(250, 350);
+		menuBox.setTranslateX(250);
+		menuBox.setTranslateY(230);
+		
+		MenuBox menuBox2 = new MenuBox(510, 350);
+		menuBox2.setTranslateX(250 + 20 + 250);
+		menuBox2.setTranslateY(230);
+		
+		root.getChildren().addAll(imageView, menuBox, menuBox2, masker);
 		return root;
 	}
 	
