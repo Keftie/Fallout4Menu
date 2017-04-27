@@ -36,6 +36,8 @@ public class Fallout4MenuApp extends Application {
 		menuBox2.setTranslateX(250 + 20 + 250);
 		menuBox2.setTranslateY(230);
 		
+		menuBox.addItem(new MenuItem("CONTINUE", 250));
+		
 		root.getChildren().addAll(imageView, menuBox, menuBox2, masker);
 		return root;
 	}

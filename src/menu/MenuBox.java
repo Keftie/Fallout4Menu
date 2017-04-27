@@ -29,4 +29,14 @@ public class MenuBox extends Pane {
 		
 		getChildren().addAll(bg, lineTop, lineBot, box);
 	}
+	
+	public void addItems(MenuItem... items) {
+		for(MenuItem item : items) {
+			addItem(item);
+		}
+	}
+	
+	public void addItem(MenuItem item) {
+		box.getChildren().addAll(item);
+	}
 }
