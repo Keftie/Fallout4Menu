@@ -55,6 +55,23 @@ public class Fallout4MenuApp extends Application {
 			ft.play();
 		});
 		menuBox.addItem(itemNew);
+		menuBox.addItem(new MenuItem("LOAD", 250));
+		
+		MenuItem itemSettings = new MenuItem("SETTINGS", 250);
+		itemSettings.setOnAction(() -> {
+			menuBox2.addItems(
+					new MenuItem("GAMEPLAY", 510),
+					new MenuItem("CONTROLS", 510),
+					new MenuItem("DISPLAY", 510),
+					new MenuItem("AUDIO", 510));
+		});
+		
+		menuBox.addItem(itemSettings);
+		menuBox.addItem(new MenuItem("CREW", 250));
+		
+		MenuItem itemExit = new MenuItem("EXIT", 250);
+		itemExit.setOnAction(() -> System.exit(0));
+		menuBox.addItem(itemExit);
 		
 		root.getChildren().addAll(imageView, menuBox, menuBox2, masker);
 		return root;
