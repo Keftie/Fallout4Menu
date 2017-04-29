@@ -1,5 +1,6 @@
 package menu;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Fallout4MenuApp extends Application {
 	
@@ -37,6 +39,22 @@ public class Fallout4MenuApp extends Application {
 		menuBox2.setTranslateY(230);
 		
 		menuBox.addItem(new MenuItem("CONTINUE", 250));
+		
+		MenuItem itemNew = new MenuItem("NEW", 250);
+		itemNew.setOnAction(() -> {
+			FadeTransition ft = new FadeTransition(Duration.seconds(1.5), masker);
+			ft.setToValue(1);
+			
+			ft.setOnFinished(e -> {
+				root.getChildren().setAll(new LoadingScreen(1280, 720, () -> {
+					masker.setOpacity(0);
+					root.getChildren().setAll(imageView, menuBox, menuBox2, masker);
+				}));
+			});
+			
+			ft.play();
+		});
+		menuBox.addItem(itemNew);
 		
 		root.getChildren().addAll(imageView, menuBox, menuBox2, masker);
 		return root;
